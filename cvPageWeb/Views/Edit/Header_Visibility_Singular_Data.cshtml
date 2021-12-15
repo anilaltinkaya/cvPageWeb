@@ -1,0 +1,63 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+
+
+@using (Html.BeginForm("Update_Header_Visibility_Singular_Data", "Edit", FormMethod.Get))
+{
+    @*<div class="row mt-3">
+            <p style="color:green">@ViewBag.Mesaj</p>
+        </div>*@
+
+
+    <div class="row mt-3">
+        <div class="col-md-4"><label class="labels">Özet Başlık</label><input type="text" name="summary_head" class="form-control" placeholder="" value="@Model.summary_head" maxlength="15" required></div>
+
+        <div class="col-md-4">
+            <input type="hidden" value="@Model.summary_visible" id="summary_visible_value" />
+            <label class="labels">Özet Görünürlük</label><select class="form-control" name="summary_visible" id="summary_visible">
+                <option value="visible">Göster</option>
+                <option value="hidden">Gizle</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-md-4"><label class="labels">İletişim Başlık</label><input type="text" name="contact_head" class="form-control" placeholder="" value="@Model.contact_head" maxlength="15" required></div>
+
+        <div class="col-md-4">
+            <input type="hidden" value="@Model.contact_visible" id="contact_visible_value" />
+            <label class="labels">İletişim Görünürlük</label><select class="form-control" name="contact_visible" id="contact_visible">
+                <option value="visible">Göster</option>
+                <option value="hidden">Gizle</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-md-4"><label class="labels">Kişisel Bilgi Başlık</label><input type="text" name="personel_info_head" class="form-control" placeholder="" value="@Model.personel_info_head" maxlength="25" required></div>
+
+        <div class="col-md-4">
+            <input type="hidden" value="@Model.personel_info_visible" id="personel_info_visible_value" />
+            <label class="labels">Kişisel Bilgi Görünürlük</label><select class="form-control" name="personel_info_visible" id="personel_info_visible">
+                <option value="visible">Göster</option>
+                <option value="hidden">Gizle</option>
+            </select>
+        </div>
+
+    </div>
+
+    <input type="hidden" name="id" value="@Model.id" />
+    <input type="hidden" name="member_id" value="@Model.member_id" />
+    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Güncelle</button></div>
+}
+
+
+<script>
+    document.getElementById("summary_visible").value = document.getElementById("summary_visible_value").value;
+    document.getElementById("contact_visible").value = document.getElementById("contact_visible_value").value;
+    document.getElementById("personel_info").value = document.getElementById("personel_info_value").value;
+</script>

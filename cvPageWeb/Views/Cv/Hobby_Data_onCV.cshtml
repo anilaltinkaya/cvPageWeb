@@ -1,0 +1,12 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_HOBBY>
+
+
+
+
+@foreach (var item in Model)
+{
+<li><i class="fa fa-paint-brush" aria-hidden="true"></i> @item.hobby</li>
+}
+
+

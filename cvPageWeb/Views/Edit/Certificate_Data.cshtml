@@ -1,0 +1,48 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_CERTIFICATE>
+
+
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+    DateTime date = Convert.ToDateTime(item.date);
+
+    string visibility = "";
+
+    if (item.visible == "visible")
+    {
+        visibility = "Göster";
+    }
+    else if (item.visible == "hidden")
+    {
+        visibility = "Gizle";
+    }
+
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">@date.Day.@date.Month.@date.Year</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.certificate_name </h5>
+            <h6 class="card-text">@item.source</h6>
+
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/CertificateDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Certificate_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}
+
+
+
+

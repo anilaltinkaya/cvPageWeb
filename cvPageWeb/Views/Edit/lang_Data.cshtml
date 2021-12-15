@@ -1,0 +1,55 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_LANG>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+    string point_visibility = "";
+    string rws_visibility = "";
+    string visibility = "";
+
+    if (item.point_visible=="visible")
+    {
+        point_visibility = "Göster";
+    }
+    else
+    {
+        point_visibility = "Gizle";
+    }
+    if (item.rws_visible=="visible")
+    {
+        rws_visibility = "Göster";
+    }
+    else
+    {
+        rws_visibility = "Gizle";
+    }
+    if (item.visible=="visible")
+    {
+        visibility = "Göster";
+    }
+    else
+    {
+        visibility = "Gizle";
+    }
+
+    <div class="card bg-light mb-12">
+        <div class="card-header"><b>Reading: </b>@item.reading_point/@item.reading_point_full <b>Writing: </b>@item.writing_point/@item.writing_point_full <b>Speaking: </b>@item.speaking_point/@item.speaking_point_full (@rws_visibility)</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.lang, @item.point/@item.point_full, @item.point_source (@point_visibility)</h5>
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/LangDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Lang_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}

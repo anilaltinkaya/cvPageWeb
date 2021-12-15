@@ -1,0 +1,52 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_PROJECTS>
+
+
+
+<link href="~/Content/res-table.css" rel="stylesheet" />
+<script src="~/Scripts/table-res.js"></script>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+    DateTime start_date = Convert.ToDateTime(item.start_date);
+    DateTime finish_date = Convert.ToDateTime(item.finish_date);
+
+    string visibility = "";
+
+    if (item.visible == "visible")
+    {
+        visibility = "Göster";
+    }
+    else if (item.visible == "hidden")
+    {
+        visibility = "Gizle";
+    }
+
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">@start_date.Day.@start_date.Month.@start_date.Year - @finish_date.Day.@finish_date.Month.@finish_date.Year</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.projects_name (@visibility)</h5>
+            <h6 class="card-text">@item.position</h6>
+            <p class="card-text"> @item.description</p>
+
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/ProjectsDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Projects_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}
+
+
+

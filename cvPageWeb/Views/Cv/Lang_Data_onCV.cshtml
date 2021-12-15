@@ -1,0 +1,17 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_LANG>
+
+
+
+
+@foreach (var item in Model)
+{
+<li>
+    <span class="text">@item.lang</span>
+    <span class="percent">
+        <div style="width:@item.lang_level%"></div>
+    </span>
+
+</li>
+}
+

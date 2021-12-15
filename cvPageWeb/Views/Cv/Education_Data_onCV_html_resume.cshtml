@@ -1,0 +1,27 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_EDUCATION>
+
+
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+        DateTime startdate = Convert.ToDateTime(item.education_start_date);
+        DateTime finishdate = Convert.ToDateTime(item.education_finish_date);
+        
+        <span class="text">@item.department </span>
+        if (item.gpa_visible== "visible")
+        {
+            <span class="text">, @item.gpa/@item.gpa_full</span>
+        }
+        <br />
+        <span class="lang_source">@item.school</span>
+        <br />
+        <span class="lang_source">@startdate.Day.@startdate.Month.@startdate.Year-@finishdate.Day.@finishdate.Month.@finishdate.Year , @item.lang</span>
+        <br /><br />
+    }
+}
+
+

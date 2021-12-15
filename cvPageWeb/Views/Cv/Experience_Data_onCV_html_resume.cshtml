@@ -1,0 +1,65 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_EXPERIENCE>
+
+@{ 
+    string[] mounth_list_turkish = { "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" };
+}
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+        DateTime startdate = Convert.ToDateTime(item.start_date);
+        DateTime finishdate = Convert.ToDateTime(item.finish_date);
+        string start_mounth_name = mounth_list_turkish[startdate.Month - 1];
+        string finish_mounth_name = mounth_list_turkish[finishdate.Month - 1];
+
+        //Başlıyor.
+        {
+            string situation = "";
+
+            if (finishdate.Day == 1 && finishdate.Month == 1 && finishdate.Year == 1)
+            {
+                situation = "Devam Ediyor";
+                finishdate = DateTime.Now;
+            }
+            else
+            {
+                situation = finish_mounth_name+" "+finishdate.Year;
+            }
+
+
+            int exp_time_year = finishdate.Year - startdate.Year;
+            int exp_time_month = finishdate.Month - startdate.Month;
+
+            if (exp_time_month<0)
+            {
+                exp_time_year = exp_time_year - 1;
+                exp_time_month = 12 + exp_time_month;
+            }
+
+
+        <span class="date">@start_mounth_name @startdate.Year - @situation  </span><span class="company_name">/ @item.city, @item.company_name  (
+    @if (exp_time_year != 0)
+    {
+        <span class="company_name"> @exp_time_year yıl </span>
+    }
+    @if (exp_time_month != 0)
+    {
+        <span class="company_name">@exp_time_month ay </span>
+    }
+    )
+</span>
+        <br />
+        <span class="title_name">@item.title,@item.work_type</span>
+        <br />
+        <span class="experience_summary">
+            @item.description
+        </span>
+        <br />
+        <br />
+        }
+    }
+    //Bitiyor.
+}

@@ -1,0 +1,16 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_ABILITY>
+
+
+
+
+@foreach (var item in Model)
+{
+<div class="box">
+    <h4>@item.ability_name</h4>
+    <div class="percent">
+        <div style="width:@item.ability_level%"></div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,57 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_EXPERIENCE>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+    DateTime start_date = Convert.ToDateTime(item.start_date);
+    DateTime finish_date = Convert.ToDateTime(item.finish_date);
+
+    string visibility = "";
+    if (item.visible == "visible")
+    {
+        visibility = "Göster";
+    }
+    else if (item.visible == "hidden")
+    {
+        visibility = "Gizle";
+    }
+
+    //Parantez başlar
+    { 
+        string situation = "";
+
+    if (finish_date.Day == 1 && finish_date.Month == 1 && finish_date.Year == 1)
+    {
+        situation = "Devam Ediyor";
+    }
+    else
+    {
+        situation = finish_date.Day + "." + finish_date.Month + "." + finish_date.Year;
+    }
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">
+            @start_date.Day.@start_date.Month.@start_date.Year - @situation
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">@item.company_name - @item.title</h5>
+            <p class="card-text">@item.description</p>
+            <p class="card-text"><b>Şehir:</b> @item.city, <b>Çalışma Şekli: </b>@item.work_type</p>
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/ExperienceDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Experience_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+    }
+    //Parantez biter
+}
+

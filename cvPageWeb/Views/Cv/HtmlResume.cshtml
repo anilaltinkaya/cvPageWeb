@@ -1,0 +1,230 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HKDLBDD0FD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-HKDLBDD0FD');
+    </script>
+
+
+
+
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <meta name="description" content="A description of your website">
+    <meta name="keywords" content="cv hazırlama,özgeçmiş hazırlama,cv nasıl hazırlanır,hazır cv,özgeçmiş nasıl hazırlanır,cv teması indir,özgeçmiş teması indir,hazır özgeçmiş,
+                                    dijital kariyer rehberi,cvupp,hızlı cv hazırla,hızlı özgeçmiş hazırla">
+    <link href="~/Content/css/resume_style.css" rel="stylesheet" />
+    <link rel="icon" href="~/Content/img/icon.jpg" type="image/x-icon" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<body">
+
+    <div id="wrapper">
+
+        <div id="header">
+
+            @*<div class="top_banner">
+                    <h1>ANIL ALTINKAYA | </h1>
+                    <p>Mekatronik Mühendisi</p>
+                </div>*@
+
+        </div>
+
+        <div id="page_content">
+
+            <div class="left_side_bar">
+
+                <div class="col_1">
+                @if (Model.photo_visible == "visible")
+                {
+                    <div class="imgBx">
+                        <img src="@Model.profile_photo" style="height: 200px; width: 200px; border-radius: 50%;" />
+                        @*<img src="@Server.MapPath(Model.profile_photo)">*@
+                    </div>
+                }
+                    <h1>@ViewBag.name @ViewBag.surname</h1>
+                    <div class="box">
+                        <h3>@Model.job</h3>
+                    </div>
+                </div>
+                @if (Model.summary_visible == "visible")
+                {
+                    <div class="col_1">
+                        <div class="box_summary">
+                            <h4>@Model.summary_head</h4>
+                            <p>
+                                @Model.summary
+                            </p>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.contact_visible == "visible")
+                {
+                    <div class="col_1">
+                        <div class="box_contact">
+                            <h4>@Model.contact_head</h4>
+                            <ul>
+                                @if (Model.tel_visible == "visible")
+                                {
+                                    <li>
+                                        <span class="icon"><i class="fa fa-phone" aria-hidden="true"></i></span>
+                                        <span class="text">@Model.tel</span>
+                                    </li>
+                                }
+
+                                <li>
+                                    <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                                    <span class="text">@ViewBag.email</span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="fa fa-linkedin" aria-hidden="true"></i></span>
+                                    <span class="text">@Model.linkedin</span>
+                                </li>
+                                <li>
+                                    <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                                    <span class="text">@Model.location</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+
+                @if (Model.education_visible == "visible")
+                {
+                    <div class="col_1">
+                        <div class="box_lang">
+                            <h4>@Model.education_head</h4>
+                            @Html.Action("Education_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        </div>
+                    </div>
+                }
+
+                @if (Model.lang_visible == "visible")
+                {
+                    <div class="col_1">
+                        <div class="box_lang">
+                            <h4>@Model.lang_head</h4>
+                            @Html.Action("Lang_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        </div>
+                    </div>
+                }
+                </div>
+
+            <div class="right_section">
+                <div class="common_content">
+                    
+                    @if (Model.experience_visible == "visible")
+                    {
+                        string y = "";
+                        <h2>@Model.experience_head 
+                    (
+                    @if (ViewBag.experience_time_year == 0)
+                    {
+                        y = "";
+
+                    }
+                    else
+                    {
+                        y = @ViewBag.experience_time_year + " yıl";
+                    }
+                    @y
+                    @{ 
+                        string x = "";
+                    }
+                        @if (ViewBag.experience_time_month==0)
+                        {
+                            x = ")";
+                        }
+                        else
+                        {
+                            x = @ViewBag.experience_time_month + " ay)";
+                        }
+                   @x </h2>
+                        @*<hr>*@
+                        @Html.Action("Experience_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        <hr />
+                    }
+
+                    @if (Model.projects_visible == "visible")
+                    {
+                        <h2>@Model.projects_head</h2>
+                        @*<hr>*@
+                        @Html.Action("Projects_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        <hr />
+                    }
+                    @if (Model.certification_visible == "visible")
+                    {
+                        <h2>@Model.certification_head</h2>
+                        <ul>
+                            @Html.Action("Certificate_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        </ul>
+                        <br />
+                        <hr>
+                    }
+                    @if (Model.areas_of_expertise_visible == "visible")
+                    {
+                        <h2>@Model.areas_of_exp_head</h2>
+
+                        <ul>
+                            @Html.Action("Ability_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        </ul>
+
+                        <br />
+                        <hr />
+                    }
+
+                    @if (Model.reference_visible == "visible")
+                    {
+                        <h2>@Model.reference_head</h2>
+                        @Html.Action("Ref_Data_onCV_html_resume", "Cv", new { member_id = Model.member_id })
+                        <hr>
+                    }
+
+                    @if (Model.personel_info_visible == "visible")
+                    {
+                        DateTime birth_date = Convert.ToDateTime(Model.birt_date);
+                        DateTime military_date = Convert.ToDateTime(Model.military_date);
+                        <h2>@Model.personel_info_head</h2>
+                        <span class="reference_name">Doğum Tarihi:&nbsp; &nbsp;</span> <span class="ref_company_name" style="margin-right:100px">&nbsp;@birth_date.Day.@birth_date.Month.@birth_date.Year</span> <span class="reference_name">Cinsiyet: &nbsp; &nbsp;</span> <span class="ref_company_name" style="margin-right:120px">&nbsp;@Model.gender</span>
+                        if (Model.nation_visible == "visible")
+                        {
+                            <span class="reference_name">Uyruk:&nbsp; &nbsp;</span> <span class="ref_company_name">&nbsp;@Model.nationality</span>
+                        }
+                        <br />
+                        <span class="reference_name">Sürücü Belgesi:&nbsp; &nbsp;</span> <span class="ref_company_name" style="padding-right:123px">&nbsp;@Model.drive_licence</span>
+                        if (Model.mlitary_visible == "visible")
+                        {
+                            <span class="reference_name">Askerlik Durumu:&nbsp; &nbsp;</span> <span class="ref_company_name" style="margin-right:120px">&nbsp;@Model.military_situation (@military_date.Day.@military_date.Month.@military_date.Year)</span>
+
+                        }
+                    }
+
+
+
+
+
+                </div>
+
+            </div>
+
+            <div class="clear"></div>
+
+
+
+        </div>
+
+    </div>
+
+</body>
+</html>

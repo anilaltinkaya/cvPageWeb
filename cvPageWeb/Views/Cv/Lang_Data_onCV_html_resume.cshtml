@@ -1,0 +1,23 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_LANG>
+
+
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+    <span class="text">@item.lang ,@item.point_source </span>
+    if (item.point_visible=="visible")
+    {
+        <span class="text">: @item.point/@item.point_full</span>
+    }
+    <br />
+    if (item.rws_visible=="visible")
+    {
+        <p>Reading:@item.reading_point/@item.reading_point_full Writing:@item.writing_point/@item.writing_point_full Speaking:@item.speaking_point/@item.speaking_point_full</p>
+
+    }
+    }
+}

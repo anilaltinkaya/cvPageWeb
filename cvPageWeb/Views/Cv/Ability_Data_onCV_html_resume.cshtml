@@ -1,0 +1,14 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_ABILITY>
+
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+
+        <li><span class="areas_of_expertise">@item.ability_name</span> : @item.ability_description</li>
+    }
+}
+

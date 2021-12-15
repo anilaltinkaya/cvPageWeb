@@ -1,0 +1,103 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Özgeçmişim</title>
+    <link rel="icon" href="~/Content/img/icon.jpg" type="image/x-icon" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+          integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+
+
+    <div class="container">
+
+        <div class="left_Side">
+            <div class="profileText">
+                <div class="imgBx">
+                    <img src=" @Model.image" />
+                </div>
+                <h2>@ViewBag.name @ViewBag.surname<br /><span>@Model.job</span></h2>
+            </div>
+            <div class="contactInfo">
+                <h3 class="title">İletişim Bilgileri</h3>
+                <ul>
+                    <li>
+                        <span class="icon"><i class="fa fa-phone-square" aria-hidden="true"></i></span>
+                        <span class="text">@Model.tel</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-envelope" aria-hidden="true"></i></span>
+                        <span class="text">@ViewBag.email</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-linkedin-square" aria-hidden="true"></i></span>
+                        <span class="text">@Model.linkedin</span>
+                    </li>
+                    <li>
+                        <span class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+                        <span class="text">@Model.location</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="contactInfo education">
+                <h3 class="title">Eğitim</h3>
+                <ul>
+                    @Html.Action("Education_Data_onCV", "Cv", new { member_id = Model.member_id })
+                </ul>
+            </div>
+
+            <div class="contactInfo language">
+                <h3 class="title">Dil</h3>
+                <ul>
+                    @Html.Action("Lang_Data_onCV", "Cv", new { member_id = Model.member_id })
+                </ul>
+            </div>
+
+
+
+        </div>
+        <div class="right_Side">
+            <div class="about">
+                <h2 class="title2">Özet</h2>
+                <p>
+                    @Model.summary
+                </p>
+            </div>
+
+            <div class="about experince">
+                <h2 class="title2">Deneyim</h2>
+                @Html.Action("Experience_Data_onCV", "Cv", new { member_id = Model.member_id })
+            </div>
+
+            <div class="about skills">
+                <h2 class="title2">Yetenekler</h2>
+                @Html.Action("Ability_Data_onCV", "Cv", new { member_id = Model.member_id })
+            </div>
+
+
+            <div class="about interest">
+                <h2 class="title2">Hobiler</h2>
+                <ul>
+                    @Html.Action("Hobby_Data_onCV", "Cv", new { member_id = Model.member_id })
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
+

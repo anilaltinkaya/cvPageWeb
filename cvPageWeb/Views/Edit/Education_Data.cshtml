@@ -1,0 +1,61 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_EDUCATION>
+
+
+
+<link href="~/Content/res-table.css" rel="stylesheet" />
+<script src="~/Scripts/table-res.js"></script>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+    DateTime education_start_date = Convert.ToDateTime(item.education_start_date);
+    DateTime education_finish_date = Convert.ToDateTime(item.education_finish_date);
+
+    string visibility = "";
+    string visibility_gpa = "";
+
+    if (item.visible=="visible")
+    {
+        visibility = "Göster";
+    }
+    else if (item.visible=="hidden")
+    {
+        visibility = "Gizle";
+    }
+
+    if (item.gpa_visible == "visible")
+    {
+        visibility_gpa = "Göster";
+    }
+    else if (item.gpa_visible == "hidden")
+    {
+        visibility_gpa = "Gizle";
+    }
+
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">@education_start_date.Day.@education_start_date.Month.@education_start_date.Year - @education_finish_date.Day.@education_finish_date.Month.@education_finish_date.Year</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.department, @item.gpa/@item.gpa_full (@visibility_gpa)</h5>
+            <h6 class="card-text">@item.school, @item.lang</h6>
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/EducationDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Education_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}
+
+
+
+

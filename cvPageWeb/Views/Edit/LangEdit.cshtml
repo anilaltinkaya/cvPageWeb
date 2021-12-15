@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "LangEdit";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+<div class="col-md-12 border-right">
+    <div class="p-3 py-5">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/Edit/ExperienceEdit/@Model.member_id" class="btn btn-primary profile-button">Deneyim Bilgileri Düzenle</a>
+                <hr />
+            </div>
+        </div>
+
+        <br />
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Yabancı Dil Bilgileriniz</h4>
+        </div>
+
+        @{
+            string lang_visibility = "";
+
+            if (Model.lang_visible == "visible")
+            {
+                lang_visibility = "Göster";
+            }
+            else
+            {
+                lang_visibility = "Gizle";
+            }
+
+        }
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6> <b>@Model.lang_head </b> (@lang_visibility)</h6>
+        </div>
+        <!-- Trigger/Open The Modal -->
+        <button class="btn btn-primary profile-button ml-auto" id="myBtn"><i class="fa fa-pencil"></i></button>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                @Html.Action("Header_Visibility_Lang_Data", "Edit", new { member_id = Model.member_id })
+            </div>
+
+        </div>
+
+
+        <div class="row mt-3">
+            <p style="color:green">@ViewBag.Mesaj</p>
+        </div>
+
+
+
+
+        @using (Html.BeginForm("Add_Lang_Data", "Edit", FormMethod.Get))
+        {
+            <div class="row mt-2">
+                @Html.Action("lang_Data", "Edit", new { member_id = Model.member_id })
+            </div>
+            <br />
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Yeni Yabancı Dil Bilgisi Ekle</h4>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Yabancı Dil</label><input type="text" class="form-control" placeholder="Yabancı dil giriniz." value="" name="lang" maxlength="20" required></div>
+                <div class="col-md-4"><label class="labels">Kaynak</label><input type="text" class="form-control" placeholder="Örn:YDS" value="" name="point_source" maxlength="15" required/></div>
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Yabancı Dil Puan</label><input type="number" class="form-control" placeholder="Örn:70" value="" step="0.01" name="point" maxlength="4" /></div>
+                <div class="col-md-4"><label class="labels">Tam Puan</label><input type="number" class="form-control" placeholder="Örn:100" value="" step="0.01" name="point_full" maxlength="4" /></div>
+
+            </div>
+
+
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Reading Puan</label><input type="text" class="form-control" placeholder="Örn:70" step="0.01" value="" name="reading_point" maxlength="4" /></div>
+                <div class="col-md-4"><label class="labels">Reading Tam Puan</label><input type="number" class="form-control" placeholder="Örn:100" step="0.01" value="" name="reading_point_full" maxlength="4" /></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Writing Puan</label><input type="text" class="form-control" placeholder="Örn:70" step="0.01" value="" name="writing_point" maxlength="4" /></div>
+                <div class="col-md-4"><label class="labels">Writing Tam Puan</label><input type="number" class="form-control" placeholder="Örn:100" step="0.01" value="" name="writing_point_full" maxlength="4" /></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Speaking Puan</label><input type="text" class="form-control" placeholder="Örn:70" step="0.01" value="" name="speaking_point" maxlength="4" /></div>
+                <div class="col-md-4"><label class="labels">Speaking Tam Puan</label><input type="number" class="form-control" placeholder="Örn:100" step="0.01" value="" name="speaking_point_full" maxlength="4" /></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <label class="labels">Puan Görünürlük</label><select class="form-control" name="point_visible" id="point_visible" required>
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="labels">Reading-Writing-Speaking Puan Görünürlük</label><select class="form-control" name="rws_visible" id="rws_visible" required>
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+
+
+
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">CV Üzerinde Görünüm Sıralaması</label><input type="number" class="form-control" placeholder="3" value="" name="placement" required></div>
+
+                <div class="col-md-4">
+                    <label class="labels">Yabancı Dil Bilgisi Görünürlük</label><select class="form-control" name="visible" id="visible">
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="member_id" value="@Model.member_id" />
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Ekle</button></div>
+        }
+    </div>
+</div>
+    </div>
+</div>
+

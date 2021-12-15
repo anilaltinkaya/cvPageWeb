@@ -1,0 +1,14 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_WORK_TYPE_LIST>
+
+
+<div class="col-md-4">
+    <label class="labels">Çalışma Şekli</label><select class="form-control" name="work_type" id="work_type" required>
+        <option disabled selected> </option>
+        @foreach (var item in Model)
+        {
+            <option>@item.working_type</option>
+        }
+    </select>
+</div>
+

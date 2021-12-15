@@ -1,0 +1,38 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+
+
+@using (Html.BeginForm("Update_Header_Visibility_Reference_Data", "Edit", FormMethod.Get))
+{
+    @*<div class="row mt-3">
+            <p style="color:green">@ViewBag.Mesaj</p>
+        </div>*@
+
+
+    <div class="row mt-3">
+        <div class="col-md-4"><label class="labels">Referanslar Başlık</label><input type="text" name="reference_head" class="form-control" placeholder="" value="@Model.reference_head" maxlength="25" required></div>
+
+        <div class="col-md-4">
+            <input type="hidden" value="@Model.reference_visible" id="reference_visible_value" />
+            <label class="labels">Referanslar Görünürlük</label><select class="form-control" name="reference_visible" id="reference_visible">
+                <option value="visible">Göster</option>
+                <option value="hidden">Gizle</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <input type="hidden" name="id" value="@Model.id" />
+    <input type="hidden" name="member_id" value="@Model.member_id" />
+    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Güncelle</button></div>
+}
+
+
+<script>
+    document.getElementById("reference_visible").value = document.getElementById("reference_visible_value").value;
+</script>
+
+
+
+

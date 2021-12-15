@@ -1,0 +1,27 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_HOBBY>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">Hobi</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.hobby</h5>
+            <p class="card-text">    </p>
+            <a href="/Edit/HobbyDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Hobby_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}

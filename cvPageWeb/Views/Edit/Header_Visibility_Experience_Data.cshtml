@@ -1,0 +1,36 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+
+
+@using (Html.BeginForm("Update_Header_Visibility_Experience_Data", "Edit", FormMethod.Get))
+{
+    @*<div class="row mt-3">
+            <p style="color:green">@ViewBag.Mesaj</p>
+        </div>*@
+
+
+    <div class="row mt-3">
+        <div class="col-md-4"><label class="labels">Deneyim Başlık</label><input type="text" name="experience_head" class="form-control" placeholder="" value="@Model.experience_head" maxlength="25" required></div>
+
+        <div class="col-md-4">
+            <input type="hidden" value="@Model.experience_visible" id="experience_visible_value" />
+            <label class="labels">Deneyim Görünürlük</label><select class="form-control" name="experience_visible" id="experience_visible">
+                <option value="visible">Göster</option>
+                <option value="hidden">Gizle</option>
+            </select>
+        </div>
+
+    </div>
+
+
+    <input type="hidden" name="id" value="@Model.id" />
+    <input type="hidden" name="member_id" value="@Model.member_id" />
+    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Güncelle</button></div>
+}
+
+
+<script>
+    document.getElementById("experience_visible").value = document.getElementById("experience_visible_value").value;
+</script>
+
+

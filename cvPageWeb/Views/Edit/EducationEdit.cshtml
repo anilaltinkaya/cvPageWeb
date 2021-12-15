@@ -1,0 +1,128 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+@{
+    ViewBag.Title = "EditProfile";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+        <div class="col-md-12 border-right">
+            <div class="p-3 py-5">
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <a href="/Edit/LangEdit/@Model.member_id" class="btn btn-primary profile-button">Dil Bilgileri Düzenle</a>
+                        <hr />
+                    </div>
+                </div>
+                <br />
+
+
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Eğitim Bilgileriniz</h4>
+                </div>
+
+                @{
+                    string visibility = "";
+
+                    if (Model.education_visible == "visible")
+                    {
+                        visibility = "Göster";
+                    }
+                    else
+                    {
+                        visibility = "Gizle";
+                    }
+
+
+                }
+
+                <div class="row">
+                    <!-- /.col -->
+                    <!-- /.col -->
+                    <div class="col-md-3 col-sm-6 col-12">
+
+
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h6> <b>@Model.education_head</b> (@visibility) <br /></h6>
+                        </div>
+                        <!-- Trigger/Open The Modal -->
+                        <button class="btn btn-primary profile-button ml-auto" id="myBtn"><i class="fa fa-pencil"></i></button>
+
+
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">&times;</span>
+                                @Html.Action("Header_Visibility_Education_Data", "Edit", new { member_id = Model.member_id })
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+
+
+
+
+                @using (Html.BeginForm("Add_Education_Data", "Edit", FormMethod.Get))
+                {
+                    <br />
+                    <div class="row mt-2">
+                        @Html.Action("Education_Data", "Edit", new { member_id = Model.member_id })
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Yeni Eğitim Bilgisi Ekle</h4>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-4"><label class="labels">Bölüm</label><input type="text" class="form-control" placeholder="Örn:Mekatronik Mühendisliği" value="" name="department" maxlength="25" required></div>
+                        <div class="col-md-4"><label class="labels">Okul Adı</label><input type="text" class="form-control" placeholder="Örn:Erciyes Üniversitesi" value="" name="school" maxlength="40" required></div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4"><label class="labels">Öğrenim Dili</label><input type="text" class="form-control" placeholder="Örn:İngilizce" value="" name="lang" maxlength="15" required></div>
+                        <div class="col-md-4"><label class="labels">Eğitim Derecesi</label><input type="text" class="form-control" placeholder="Örn:İngilizce" value="" name="lang" maxlength="15" required></div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4"><label class="labels">Not Ortalaması</label><input type="number" class="form-control" step="0.01" placeholder="3.42" value="" name="gpa" required></div>
+                        <div class="col-md-4"><label class="labels">Tam Not</label><input type="number" class="form-control" placeholder="4" value="" name="gpa_full" required></div>
+                        <div class="col-md-4">
+
+                            <label class="labels">Not Ortalaması Görünürlük</label><select class="form-control" name="gpa_visible" id="gpa_visible" required>
+                                <option value="visible">Göster</option>
+                                <option value="hidden">Gizle</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4"><label class="labels">Başlangıç Tarihi</label><input type="date" class="form-control" id="education_start_date" name="education_start_date" value="" required></div>
+                        <div class="col-md-4"><label class="labels">Bitiş Tarihi</label><input type="date" class="form-control" id="education_finish_date" name="education_finish_date" value="" required></div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-4"><label class="labels">CV Üzerinde Görünüm Sıralaması</label><input type="number" class="form-control" placeholder="3" value="" name="placement" required></div>
+
+                        <div class="col-md-4">
+
+                            <label class="labels">Eğitim Görünürlük</label><select class="form-control" name="visible" id="visible" required>
+                                <option value="visible">Göster</option>
+                                <option value="hidden">Gizle</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value="@Model.id" />
+                    <input type="hidden" name="member_id" value="@Model.member_id" />
+                    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Ekle</button></div>
+                }
+
+
+
+
+            </div>
+        </div>
+</div>
+</div>

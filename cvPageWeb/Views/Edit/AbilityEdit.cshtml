@@ -1,0 +1,99 @@
+﻿
+@{
+    ViewBag.Title = "AbilityEdit";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+<div class="col-md-12 border-right">
+    <div class="p-3 py-5">
+
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/Edit/ReferenceEdit/@Model.member_id" class="btn btn-primary profile-button">Referans Bilgileri Düzenle</a>
+                <hr />
+            </div>
+        </div>
+        <br />
+
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Yetenek Bilgileriniz</h4>
+        </div>
+
+        @{
+            string areas_of_expertise_visibility = "";
+
+            if (Model.areas_of_expertise_visible == "visible")
+            {
+                areas_of_expertise_visibility = "Göster";
+            }
+            else
+            {
+                areas_of_expertise_visibility = "Gizle";
+            }
+
+        }
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6> <b>@Model.areas_of_exp_head </b> (@areas_of_expertise_visibility)</h6>
+        </div>
+        <!-- Trigger/Open The Modal -->
+        <button class="btn btn-primary profile-button ml-auto" id="myBtn"><i class="fa fa-pencil"></i></button>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                @Html.Action("Header_Visibility_Ability_Data", "Edit", new { member_id = Model.member_id })
+            </div>
+
+        </div>
+
+
+
+        @using (Html.BeginForm("Add_Ability_Data", "Edit", FormMethod.Get))
+        {
+            <div class="row mt-2">
+                @Html.Action("Ability_Data", "Edit", new { member_id = Model.member_id })
+
+            </div>
+
+            <br />
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Yeni Yetenek Bilgisi Ekle</h4>
+            </div>
+
+
+            <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Yetenek</label><input type="text" class="form-control" placeholder="" value="" name="ability_name" maxlength="15" required></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label class="labels">Açıklama</label>
+                    <textarea class="form-control" id="ability_description" rows="3" name="ability_description" maxlength="100" required></textarea>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">CV Üzerinde Görünüm Sıralaması</label><input type="number" class="form-control" placeholder="3" value="" name="placement" required></div>
+
+                <div class="col-md-4">
+                    <label class="labels">Yetenek Görünürlük</label><select class="form-control" name="visible" id="visible" required>
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="member_id" value="@Model.member_id" />
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Ekle</button></div>
+        }
+    </div>
+</div>
+    </div>
+</div>
+

@@ -1,0 +1,50 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_REFERENCE>
+
+
+
+<link href="~/Content/res-table.css" rel="stylesheet" />
+<script src="~/Scripts/table-res.js"></script>
+
+
+
+
+<br />
+
+
+@foreach (var item in Model)
+{
+
+    string visibility = "";
+
+    if (item.visible == "visible")
+    {
+        visibility = "Göster";
+    }
+    else if (item.visible == "hidden")
+    {
+        visibility = "Gizle";
+    }
+
+
+    <div class="card bg-light mb-12">
+        <div class="card-header">@item.working_at</div>
+        <div class="card-body">
+            <h5 class="card-title">@item.reference_name</h5>
+            <h6 class="card-text">@item.ref_tel, @item.ref_mail</h6>
+            <p class="card-text"><b>Sıralama:</b> @item.placement, <b>Görünüm: </b>@visibility</p>
+            <a href="/Edit/ReferenceDelete?member_id=@item.member_id&&id=@item.id" class="btn btn-danger">Sil</a>
+            <a href="/Edit/Update_Reference_Data/@item.id" class="btn btn-success">Düzenle</a>
+        </div>
+    </div>
+    <div class="row">
+        <br />
+    </div>
+
+
+}
+
+
+
+
+

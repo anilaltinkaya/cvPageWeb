@@ -1,0 +1,138 @@
+﻿
+@{
+    ViewBag.Title = "ExperienceEdit";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+<div class="col-md-12 border-right">
+    <div class="p-3 py-5">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/Edit/ProjectsEdit/@Model.member_id" class="btn btn-primary profile-button">Proje Bilgileri Düzenle</a>
+                <hr />
+            </div>
+        </div>
+        <br />
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Deneyim Bilgileriniz</h4>
+        </div>
+
+
+        @{
+            string experience_visibility = "";
+
+            if (Model.experience_visible == "visible")
+            {
+                experience_visibility = "Göster";
+            }
+            else
+            {
+                experience_visibility = "Gizle";
+            }
+
+        }
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6> <b>@Model.experience_head </b> (@experience_visibility)</h6>
+        </div>
+        <!-- Trigger/Open The Modal -->
+        <button class="btn btn-primary profile-button ml-auto" id="myBtn"><i class="fa fa-pencil"></i></button>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                @Html.Action("Header_Visibility_Experience_Data", "Edit", new { member_id = Model.member_id })
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="row mt-3">
+            <p style="color:green">@ViewBag.Mesaj</p>
+        </div>
+
+
+
+        @using (Html.BeginForm("Add_Experience_Data", "Edit", FormMethod.Get))
+        {
+            <div class="row mt-2">
+                @Html.Action("Experience_Data", "Edit", new { member_id = Model.member_id })
+
+            </div>
+
+            <br />
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Yeni Deneyim Bilgisi Ekle</h4>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Şirket Adı</label><input type="text" class="form-control" placeholder="Şirket adı giriniz." value="" name="company_name" required maxlength="25"></div>
+                <div class="col-md-4"><label class="labels">Ünvan</label><input type="text" class="form-control" placeholder="Ünvan giriniz." value="" name="title" required maxlength="25"></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Başlangıç Tarihi</label><input type="date" class="form-control" id="start_date" name="start_date" required></div>
+                <div class="col-md-4"><label class="labels" id="finish_date_label">Bitiş Tarihi</label><input type="date" class="form-control" id="finish_date" name="finish_date" required></div>
+                
+
+                <div class="col-md-4">
+                    <label class="labels">Devam Ediyorum</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="1" id="flexCheckDefault" onchange="valueChanged()">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 mt-3">
+                <label class="labels">Açıklama</label>
+                <textarea class="form-control" id="description" rows="3" name="description" maxlength="400" required></textarea>
+            </div>
+            <div class="row mt-3">
+                @Html.Action("City_List", "Edit")
+                @Html.Action("Work_Type_List", "Edit")
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">CV Üzerinde Görünüm Sıralaması</label><input type="number" class="form-control" placeholder="3" value="" name="placement" required></div>
+
+                <div class="col-md-4">
+                    <label class="labels">Deneyim Görünürlük</label><select class="form-control" name="visible" id="visible">
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="member_id" value="@Model.member_id" />
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Ekle</button></div>
+        }
+    </div>
+</div>
+    </div>
+</div>
+
+<script>
+    function valueChanged() {
+        if ($('#flexCheckDefault').is(":checked")) {
+            $("#finish_date").hide();
+            $("#finish_date_label").hide();
+            $("input#finish_date").removeAttr("required");
+        }
+        else {
+            $("#finish_date").show();
+            $("#finish_date_label").show();
+            document.getElementById("finish_date").required = true;
+        }
+            
+    }
+</script>

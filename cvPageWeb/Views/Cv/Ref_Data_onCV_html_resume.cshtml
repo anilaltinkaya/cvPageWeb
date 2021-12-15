@@ -1,0 +1,19 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_REFERENCE>
+
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+
+        <span class="reference_name">@item.reference_name &nbsp;&nbsp;</span> <span class="ref_company_name"> - @item.working_at - &nbsp;&nbsp;</span>
+        <span class="title_name">@item.title &nbsp;&nbsp;&nbsp;&nbsp;</span>
+
+        <span class="title_name">@item.ref_tel - @item.ref_mail</span>
+        <br />
+    }
+}
+
+

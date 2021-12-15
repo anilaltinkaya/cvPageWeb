@@ -1,0 +1,28 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_PROJECTS>
+
+@{
+    string[] mounth_list_turkish = { "Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık" };
+}
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+        DateTime startdate = Convert.ToDateTime(item.start_date);
+        DateTime finishdate = Convert.ToDateTime(item.finish_date);
+        string start_mounth_name = mounth_list_turkish[startdate.Month - 1];
+        string finish_mounth_name = mounth_list_turkish[finishdate.Month - 1];
+
+        <span class="date">@start_mounth_name @startdate.Year - @finish_mounth_name @finishdate.Year </span><span class="company_name">/ @item.projects_name </span>
+        <br />
+        <span class="title_name">@item.position (@item.company_name)</span>
+        <br />
+        <span class="experience_summary">
+            @item.description
+        </span>
+        <br />
+        <br />
+    }
+}

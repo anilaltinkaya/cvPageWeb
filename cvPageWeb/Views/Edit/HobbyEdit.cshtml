@@ -1,0 +1,37 @@
+﻿
+@{
+    ViewBag.Title = "HobbyEdit";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+<div class="col-md-12 border-right">
+    <div class="p-3 py-5">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Hobi Bilgileriniz</h4>
+        </div>
+        @using (Html.BeginForm("Add_Hobby_Data", "Edit", FormMethod.Get))
+        {
+            <div class="row mt-2">
+                @Html.Action("Hobby_Data", "Edit", new { member_id = Model.member_id })
+
+            </div>
+            <div class="row mt-3">
+
+                <div class="col-md-6"><label class="labels">Hobi</label><input type="text" class="form-control" placeholder="Hobi" value="" name="hobby"></div>
+
+
+
+            </div>
+            <div class="row mt-3">
+
+
+            </div>
+            <input type="hidden" name="id" value="@Model.id" />
+            <input type="hidden" name="member_id" value="@Model.member_id" />
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Kaydet</button></div>
+        }
+    </div>
+</div>
+    </div>
+</div>
+

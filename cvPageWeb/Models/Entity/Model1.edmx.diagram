@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="50e2f7ef2c99434c84b511ba304f6daf" Name="Diagram1">
+        <EntityTypeShape EntityType="resupModel.TBL_HOBBY" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="resupModel.TBL_RESET_PASS_REQUEST" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="resupModel.TBL_MEMBER_ROLES" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_CERTIFICATE" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_REFERENCE" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_PROJECTS" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_ABILITY" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_LANG" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_EDUCATION" Width="1.5" PointX="11.375" PointY="6.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_SINGULAR_INFO" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_EXPERIENCE" Width="1.5" PointX="7.375" PointY="11.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_WORK_TYPE_LIST" Width="1.5" PointX="9.375" PointY="11.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_MEMBERS" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_GUEST_MESSAGES" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="resupModel.TBL_CITY_LIST" Width="1.5" PointX="3.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,16 @@
+﻿@using cvPageWeb.Models.Entity
+@model List<TBL_CERTIFICATE>
+
+
+
+@foreach (var item in Model)
+{
+    if (item.visible == "visible")
+    {
+        DateTime date = Convert.ToDateTime(item.date);
+
+        <li><span class="date_certificate">@date.Year - </span>@item.certificate_name , @item.source </li>
+    }
+}
+
+

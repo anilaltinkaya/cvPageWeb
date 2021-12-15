@@ -1,0 +1,33 @@
+﻿@model cvPageWeb.Models.Entity.TBL_SINGULAR_INFO
+
+
+
+<form class="form-group" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    <div class="row mt-3">
+        <p style="color:green">@ViewBag.Mesaj</p>
+    </div>
+
+    <div class="row mt-3">
+        <div class="form-group">
+            Fotoğraf Güncelle <br />
+            <input type="file" id="profile_photo" name="profile_photo" class="btn btn-info" required>
+        </div>
+    </div>
+
+
+    <input type="hidden" name="id" value="@Model.id" />
+    <input type="hidden" name="member_id" value="@Model.member_id" />
+    <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Güncelle</button></div>
+</form>
+
+
+    <script>
+        document.getElementById("education_visible").value = document.getElementById("education_visible_value").value;
+    </script>
+
+
+
+
+
+    

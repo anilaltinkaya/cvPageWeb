@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="resupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TBL_ABILITY">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="ability_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="ability_description" Type="nvarchar" MaxLength="100" />
+          <Property Name="ability_level" Type="int" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_CERTIFICATE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="date" Type="date" />
+          <Property Name="source" Type="nvarchar" MaxLength="20" />
+          <Property Name="certificate_name" Type="nvarchar" MaxLength="200" />
+          <Property Name="visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="member_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_CITY_LIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_EDUCATION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="education_start_date" Type="date" />
+          <Property Name="education_finish_date" Type="date" />
+          <Property Name="department" Type="nvarchar" MaxLength="255" />
+          <Property Name="gpa" Type="nvarchar" MaxLength="10" />
+          <Property Name="gpa_full" Type="nvarchar" MaxLength="10" />
+          <Property Name="school" Type="nvarchar" MaxLength="255" />
+          <Property Name="lang" Type="nvarchar" MaxLength="50" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="gpa_visible" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TBL_EXPERIENCE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="finish_date" Type="date" />
+          <Property Name="company_name" Type="nvarchar" MaxLength="255" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" />
+          <Property Name="work_type" Type="nvarchar" MaxLength="50" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_GUEST_MESSAGES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" />
+          <Property Name="subject" Type="nvarchar(max)" />
+          <Property Name="message" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_HOBBY">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="hobby" Type="nvarchar" MaxLength="50" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_LANG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="lang" Type="nvarchar" MaxLength="50" />
+          <Property Name="point_source" Type="nvarchar" MaxLength="50" />
+          <Property Name="point" Type="nvarchar" MaxLength="10" />
+          <Property Name="point_full" Type="nvarchar" MaxLength="10" />
+          <Property Name="reading_point" Type="nvarchar" MaxLength="10" />
+          <Property Name="reading_point_full" Type="nvarchar" MaxLength="10" />
+          <Property Name="writing_point" Type="nvarchar" MaxLength="10" />
+          <Property Name="writing_point_full" Type="nvarchar" MaxLength="10" />
+          <Property Name="speaking_point" Type="nvarchar" MaxLength="10" />
+          <Property Name="speaking_point_full" Type="nvarchar" MaxLength="10" />
+          <Property Name="lang_level" Type="int" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="source_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="point_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="rws_visible" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBER_ROLES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_id" Type="nvarchar(max)" />
+          <Property Name="role_id" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="50" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="password" Type="nvarchar" MaxLength="50" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_PROJECTS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="projects_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="finish_date" Type="date" />
+          <Property Name="position" Type="nvarchar" MaxLength="50" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="company_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="member_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_REFERENCE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="placement" Type="int" />
+          <Property Name="reference_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="working_at" Type="nvarchar" MaxLength="50" />
+          <Property Name="title" Type="nvarchar" MaxLength="50" />
+          <Property Name="ref_tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="ref_mail" Type="nvarchar" MaxLength="50" />
+          <Property Name="visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="member_id" Type="int" />
+        </EntityType>
+        <EntityType Name="TBL_RESET_PASS_REQUEST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="TBL_SINGULAR_INFO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="member_id" Type="int" />
+          <Property Name="profile_photo" Type="nvarchar(max)" />
+          <Property Name="photo_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="job" Type="nvarchar" MaxLength="100" />
+          <Property Name="tel_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="tel" Type="nvarchar" MaxLength="20" />
+          <Property Name="linkedin" Type="nvarchar" MaxLength="50" />
+          <Property Name="location" Type="nvarchar" MaxLength="100" />
+          <Property Name="summary" Type="nvarchar" MaxLength="300" />
+          <Property Name="image" Type="nvarchar(max)" />
+          <Property Name="birt_date" Type="date" />
+          <Property Name="gender_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="gender" Type="nvarchar" MaxLength="30" />
+          <Property Name="nation_visible" Type="nvarchar" MaxLength="20" />
+          <Property Name="nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="drive_licence" Type="nvarchar" MaxLength="4" />
+          <Property Name="summary_head" Type="nvarchar" MaxLength="20" />
+          <Property Name="contact_head" Type="nvarchar" MaxLength="20" />
+          <Property Name="education_head" Type="nvarchar" MaxLength="20" />
+          <Property Name="lang_head" Type="nvarchar" MaxLength="20" />
+          <Property Name="experience_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="projects_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="certification_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="areas_of_exp_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="reference_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="personel_info_head" Type="nvarchar" MaxLength="25" />
+          <Property Name="summary_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="contact_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="education_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="lang_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="experience_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="projects_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="certification_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="areas_of_expertise_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="reference_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="personel_info_visible" Type="nvarchar" MaxLength="50" />
+          <Property Name="military_situation" Type="nvarchar" MaxLength="20" />
+          <Property Name="military_date" Type="date" />
+          <Property Name="mlitary_visible" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TBL_WORK_TYPE_LIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="working_type" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="resupModelStoreContainer">
+          <EntitySet Name="TBL_ABILITY" EntityType="Self.TBL_ABILITY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CERTIFICATE" EntityType="Self.TBL_CERTIFICATE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_CITY_LIST" EntityType="Self.TBL_CITY_LIST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EDUCATION" EntityType="Self.TBL_EDUCATION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_EXPERIENCE" EntityType="Self.TBL_EXPERIENCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_GUEST_MESSAGES" EntityType="Self.TBL_GUEST_MESSAGES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_HOBBY" EntityType="Self.TBL_HOBBY" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_LANG" EntityType="Self.TBL_LANG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MEMBER_ROLES" EntityType="Self.TBL_MEMBER_ROLES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_MEMBERS" EntityType="Self.TBL_MEMBERS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_PROJECTS" EntityType="Self.TBL_PROJECTS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_REFERENCE" EntityType="Self.TBL_REFERENCE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_RESET_PASS_REQUEST" EntityType="Self.TBL_RESET_PASS_REQUEST" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_SINGULAR_INFO" EntityType="Self.TBL_SINGULAR_INFO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TBL_WORK_TYPE_LIST" EntityType="Self.TBL_WORK_TYPE_LIST" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="resupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TBL_HOBBY">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="hobby" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_RESET_PASS_REQUEST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="resupEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TBL_HOBBY" EntityType="Self.TBL_HOBBY" />
+          <EntitySet Name="TBL_RESET_PASS_REQUEST" EntityType="Self.TBL_RESET_PASS_REQUEST" />
+          <EntitySet Name="TBL_MEMBER_ROLES" EntityType="resupModel.TBL_MEMBER_ROLES" />
+          <EntitySet Name="TBL_CERTIFICATE" EntityType="resupModel.TBL_CERTIFICATE" />
+          <EntitySet Name="TBL_REFERENCE" EntityType="resupModel.TBL_REFERENCE" />
+          <EntitySet Name="TBL_PROJECTS" EntityType="resupModel.TBL_PROJECTS" />
+          <EntitySet Name="TBL_ABILITY" EntityType="resupModel.TBL_ABILITY" />
+          <EntitySet Name="TBL_LANG" EntityType="resupModel.TBL_LANG" />
+          <EntitySet Name="TBL_EDUCATION" EntityType="resupModel.TBL_EDUCATION" />
+          <EntitySet Name="TBL_SINGULAR_INFO" EntityType="resupModel.TBL_SINGULAR_INFO" />
+          <EntitySet Name="TBL_EXPERIENCE" EntityType="resupModel.TBL_EXPERIENCE" />
+          <EntitySet Name="TBL_WORK_TYPE_LIST" EntityType="resupModel.TBL_WORK_TYPE_LIST" />
+          <EntitySet Name="TBL_MEMBERS" EntityType="resupModel.TBL_MEMBERS" />
+          <EntitySet Name="TBL_GUEST_MESSAGES" EntityType="resupModel.TBL_GUEST_MESSAGES" />
+          <EntitySet Name="TBL_CITY_LIST" EntityType="resupModel.TBL_CITY_LIST" />
+        </EntityContainer>
+        <EntityType Name="TBL_MEMBER_ROLES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="role_id" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_CERTIFICATE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+          <Property Name="source" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="certificate_name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_REFERENCE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="reference_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="working_at" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ref_tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ref_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_PROJECTS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="projects_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="finish_date" Type="DateTime" Precision="0" />
+          <Property Name="position" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="company_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="TBL_ABILITY">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="ability_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ability_description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ability_level" Type="Int32" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_LANG">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="point_source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="point" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="point_full" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reading_point" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="reading_point_full" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="writing_point" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="writing_point_full" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="speaking_point" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="speaking_point_full" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="lang_level" Type="Int32" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="source_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="point_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="rws_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_EDUCATION">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="education_start_date" Type="DateTime" Precision="0" />
+          <Property Name="education_finish_date" Type="DateTime" Precision="0" />
+          <Property Name="department" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="gpa" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="gpa_full" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="school" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="lang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="gpa_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_SINGULAR_INFO">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="profile_photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="photo_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="job" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="tel_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="linkedin" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="summary" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="birt_date" Type="DateTime" Precision="0" />
+          <Property Name="gender_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="nation_visible" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="drive_licence" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+          <Property Name="summary_head" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="contact_head" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="education_head" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="lang_head" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="experience_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="projects_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="certification_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="areas_of_exp_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="reference_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="personel_info_head" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="summary_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contact_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="education_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="lang_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="experience_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="projects_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="certification_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="areas_of_expertise_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="reference_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="personel_info_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="military_situation" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="military_date" Type="DateTime" Precision="0" />
+          <Property Name="mlitary_visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_EXPERIENCE">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="placement" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="finish_date" Type="DateTime" Precision="0" />
+          <Property Name="company_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="work_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="member_id" Type="Int32" />
+          <Property Name="visible" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_WORK_TYPE_LIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="working_type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_MEMBERS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_GUEST_MESSAGES">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="subject" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TBL_CITY_LIST">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="resupModelStoreContainer" CdmEntityContainer="resupEntities1">
+          <EntitySetMapping Name="TBL_HOBBY">
+            <EntityTypeMapping TypeName="resupModel.TBL_HOBBY">
+              <MappingFragment StoreEntitySet="TBL_HOBBY">
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="hobby" ColumnName="hobby" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_RESET_PASS_REQUEST">
+            <EntityTypeMapping TypeName="resupModel.TBL_RESET_PASS_REQUEST">
+              <MappingFragment StoreEntitySet="TBL_RESET_PASS_REQUEST">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="email" ColumnName="email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MEMBER_ROLES">
+            <EntityTypeMapping TypeName="resupModel.TBL_MEMBER_ROLES">
+              <MappingFragment StoreEntitySet="TBL_MEMBER_ROLES">
+                <ScalarProperty Name="role_id" ColumnName="role_id" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CERTIFICATE">
+            <EntityTypeMapping TypeName="resupModel.TBL_CERTIFICATE">
+              <MappingFragment StoreEntitySet="TBL_CERTIFICATE">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="certificate_name" ColumnName="certificate_name" />
+                <ScalarProperty Name="source" ColumnName="source" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_REFERENCE">
+            <EntityTypeMapping TypeName="resupModel.TBL_REFERENCE">
+              <MappingFragment StoreEntitySet="TBL_REFERENCE">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="ref_mail" ColumnName="ref_mail" />
+                <ScalarProperty Name="ref_tel" ColumnName="ref_tel" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="working_at" ColumnName="working_at" />
+                <ScalarProperty Name="reference_name" ColumnName="reference_name" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_PROJECTS">
+            <EntityTypeMapping TypeName="resupModel.TBL_PROJECTS">
+              <MappingFragment StoreEntitySet="TBL_PROJECTS">
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="position" ColumnName="position" />
+                <ScalarProperty Name="finish_date" ColumnName="finish_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="projects_name" ColumnName="projects_name" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_ABILITY">
+            <EntityTypeMapping TypeName="resupModel.TBL_ABILITY">
+              <MappingFragment StoreEntitySet="TBL_ABILITY">
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="ability_level" ColumnName="ability_level" />
+                <ScalarProperty Name="ability_description" ColumnName="ability_description" />
+                <ScalarProperty Name="ability_name" ColumnName="ability_name" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_LANG">
+            <EntityTypeMapping TypeName="resupModel.TBL_LANG">
+              <MappingFragment StoreEntitySet="TBL_LANG">
+                <ScalarProperty Name="rws_visible" ColumnName="rws_visible" />
+                <ScalarProperty Name="point_visible" ColumnName="point_visible" />
+                <ScalarProperty Name="source_visible" ColumnName="source_visible" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="lang_level" ColumnName="lang_level" />
+                <ScalarProperty Name="speaking_point_full" ColumnName="speaking_point_full" />
+                <ScalarProperty Name="speaking_point" ColumnName="speaking_point" />
+                <ScalarProperty Name="writing_point_full" ColumnName="writing_point_full" />
+                <ScalarProperty Name="writing_point" ColumnName="writing_point" />
+                <ScalarProperty Name="reading_point_full" ColumnName="reading_point_full" />
+                <ScalarProperty Name="reading_point" ColumnName="reading_point" />
+                <ScalarProperty Name="point_full" ColumnName="point_full" />
+                <ScalarProperty Name="point" ColumnName="point" />
+                <ScalarProperty Name="point_source" ColumnName="point_source" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EDUCATION">
+            <EntityTypeMapping TypeName="resupModel.TBL_EDUCATION">
+              <MappingFragment StoreEntitySet="TBL_EDUCATION">
+                <ScalarProperty Name="gpa_visible" ColumnName="gpa_visible" />
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="lang" ColumnName="lang" />
+                <ScalarProperty Name="school" ColumnName="school" />
+                <ScalarProperty Name="gpa_full" ColumnName="gpa_full" />
+                <ScalarProperty Name="gpa" ColumnName="gpa" />
+                <ScalarProperty Name="department" ColumnName="department" />
+                <ScalarProperty Name="education_finish_date" ColumnName="education_finish_date" />
+                <ScalarProperty Name="education_start_date" ColumnName="education_start_date" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_SINGULAR_INFO">
+            <EntityTypeMapping TypeName="resupModel.TBL_SINGULAR_INFO">
+              <MappingFragment StoreEntitySet="TBL_SINGULAR_INFO">
+                <ScalarProperty Name="mlitary_visible" ColumnName="mlitary_visible" />
+                <ScalarProperty Name="military_date" ColumnName="military_date" />
+                <ScalarProperty Name="military_situation" ColumnName="military_situation" />
+                <ScalarProperty Name="personel_info_visible" ColumnName="personel_info_visible" />
+                <ScalarProperty Name="reference_visible" ColumnName="reference_visible" />
+                <ScalarProperty Name="areas_of_expertise_visible" ColumnName="areas_of_expertise_visible" />
+                <ScalarProperty Name="certification_visible" ColumnName="certification_visible" />
+                <ScalarProperty Name="projects_visible" ColumnName="projects_visible" />
+                <ScalarProperty Name="experience_visible" ColumnName="experience_visible" />
+                <ScalarProperty Name="lang_visible" ColumnName="lang_visible" />
+                <ScalarProperty Name="education_visible" ColumnName="education_visible" />
+                <ScalarProperty Name="contact_visible" ColumnName="contact_visible" />
+                <ScalarProperty Name="summary_visible" ColumnName="summary_visible" />
+                <ScalarProperty Name="personel_info_head" ColumnName="personel_info_head" />
+                <ScalarProperty Name="reference_head" ColumnName="reference_head" />
+                <ScalarProperty Name="areas_of_exp_head" ColumnName="areas_of_exp_head" />
+                <ScalarProperty Name="certification_head" ColumnName="certification_head" />
+                <ScalarProperty Name="projects_head" ColumnName="projects_head" />
+                <ScalarProperty Name="experience_head" ColumnName="experience_head" />
+                <ScalarProperty Name="lang_head" ColumnName="lang_head" />
+                <ScalarProperty Name="education_head" ColumnName="education_head" />
+                <ScalarProperty Name="contact_head" ColumnName="contact_head" />
+                <ScalarProperty Name="summary_head" ColumnName="summary_head" />
+                <ScalarProperty Name="drive_licence" ColumnName="drive_licence" />
+                <ScalarProperty Name="nationality" ColumnName="nationality" />
+                <ScalarProperty Name="nation_visible" ColumnName="nation_visible" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="gender_visible" ColumnName="gender_visible" />
+                <ScalarProperty Name="birt_date" ColumnName="birt_date" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="summary" ColumnName="summary" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="tel_visible" ColumnName="tel_visible" />
+                <ScalarProperty Name="job" ColumnName="job" />
+                <ScalarProperty Name="photo_visible" ColumnName="photo_visible" />
+                <ScalarProperty Name="profile_photo" ColumnName="profile_photo" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_EXPERIENCE">
+            <EntityTypeMapping TypeName="resupModel.TBL_EXPERIENCE">
+              <MappingFragment StoreEntitySet="TBL_EXPERIENCE">
+                <ScalarProperty Name="visible" ColumnName="visible" />
+                <ScalarProperty Name="member_id" ColumnName="member_id" />
+                <ScalarProperty Name="work_type" ColumnName="work_type" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="finish_date" ColumnName="finish_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="placement" ColumnName="placement" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_WORK_TYPE_LIST">
+            <EntityTypeMapping TypeName="resupModel.TBL_WORK_TYPE_LIST">
+              <MappingFragment StoreEntitySet="TBL_WORK_TYPE_LIST">
+                <ScalarProperty Name="working_type" ColumnName="working_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_MEMBERS">
+            <EntityTypeMapping TypeName="resupModel.TBL_MEMBERS">
+              <MappingFragment StoreEntitySet="TBL_MEMBERS">
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_GUEST_MESSAGES">
+            <EntityTypeMapping TypeName="resupModel.TBL_GUEST_MESSAGES">
+              <MappingFragment StoreEntitySet="TBL_GUEST_MESSAGES">
+                <ScalarProperty Name="message" ColumnName="message" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TBL_CITY_LIST">
+            <EntityTypeMapping TypeName="resupModel.TBL_CITY_LIST">
+              <MappingFragment StoreEntitySet="TBL_CITY_LIST">
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

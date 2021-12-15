@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "ProjectsEdit";
+    Layout = "~/Views/Shared/EditLayout.cshtml";
+}
+
+
+
+
+<div class="col-md-12 border-right">
+    <div class="p-3 py-5">
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <a href="/Edit/CertificateEdit/@Model.member_id" class="btn btn-primary profile-button">Sertifika Bilgileri Düzenle</a>
+                <hr />
+            </div>
+        </div>
+
+        <br />
+
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Proje Bilgileriniz</h4>
+        </div>
+
+        @{
+            string projects_visibility = "";
+
+            if (Model.projects_visible == "visible")
+            {
+                projects_visibility = "Göster";
+            }
+            else
+            {
+                projects_visibility = "Gizle";
+            }
+
+        }
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h6> <b>@Model.projects_head </b> (@projects_visibility)</h6>
+        </div>
+        <!-- Trigger/Open The Modal -->
+        <button class="btn btn-primary profile-button ml-auto" id="myBtn"><i class="fa fa-pencil"></i></button>
+
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                @Html.Action("Header_Visibility_Projects_Data", "Edit", new { member_id = Model.member_id })
+            </div>
+
+        </div>
+
+
+
+
+
+
+        @using (Html.BeginForm("Add_Projects_Data", "Edit", FormMethod.Get))
+        {
+
+            <div class="row mt-3">
+                <p style="color:green">@ViewBag.Mesaj</p>
+            </div>
+
+
+
+            <div class="row mt-2">
+                @Html.Action("Projects_Data", "Edit", new { member_id = Model.member_id })
+
+            </div>
+            <br />
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Yeni Proje Bilgisi Ekle</h4>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Proje Adı</label><input type="text" class="form-control" placeholder="Örn:Buzdolabı Üretim Hattı" value="" name="projects_name" maxlength="40" required></div>
+                <div class="col-md-4"><label class="labels">Projedeki Görev</label><input type="text" class="form-control" placeholder="Örn:Proje Yöneticisi" value="" name="position" maxlength="40" required></div>
+                <div class="col-md-4"><label class="labels">Şirket Adı</label><input type="text" class="form-control" placeholder="Örn:Tesla Elektronik" value="" name="company_name" maxlength="30" required></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">Başlangıç Tarihi</label><input type="date" class="form-control" id="start_date" name="start_date" required></div>
+                <div class="col-md-4"><label class="labels">Bitiş Tarihi</label><input type="date" class="form-control" id="finish_date" name="finish_date" required></div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <label class="labels">Açıklama</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="description" maxlength="300" placeholder="Geliştirilen Yetenekler:Proje Yönetimi,Solidworks,Shneider PLC" required></textarea>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-4"><label class="labels">CV Üzerinde Görünüm Sıralaması</label><input type="number" class="form-control" placeholder="3" value="" name="placement" required></div>
+
+                <div class="col-md-4">
+                    <label class="labels">Proje Görünürlük</label><select class="form-control" name="visible" id="visible" required>
+                        <option value="visible">Göster</option>
+                        <option value="hidden">Gizle</option>
+                    </select>
+                </div>
+            </div>
+
+            <input type="hidden" name="id" value="@Model.id" />
+            <input type="hidden" name="member_id" value="@Model.member_id" />
+            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Ekle</button></div>
+        }
+
+
+
+
+
+
+    </div>
+</div>
+
+</div>
+</div>
